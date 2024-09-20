@@ -9,13 +9,11 @@ jobs:
       image: veracode/pipeline-scan:latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repoisitory
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
       - name: Veracode CLI Autopacker
         run: |
-          ./veracode.exe package --source . --trust yes --output /tmp/veracode.zip
+          /home/gvg/tools/veracode package --source . --trust yes --output /tmp/veracode.zip
           ls
 
