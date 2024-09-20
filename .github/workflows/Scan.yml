@@ -10,11 +10,11 @@ jobs:
       - name: Checkout Repoisitory
         uses: actions/checkout@v4
 
-      - name: Veracode CLI Autopacker
-        uses: docker://veracode/pipeline-scan:latest
-        with:
-          entrypoint: /bin/sh
-          args: -c "/home/gvg/tools/veracode package --source . --trust yes --output /tmp/veracode.zip && ls" 
+      # - name: Veracode CLI Autopacker
+      #   uses: docker://veracode/pipeline-scan:latest
+      #   with:
+      #     entrypoint: /bin/sh
+      #     args: -c "/home/gvg/tools/veracode package --source . --trust yes --output /tmp/veracode.zip && ls" 
 
       - name: Veracode CLI Autopacker
         run: |
