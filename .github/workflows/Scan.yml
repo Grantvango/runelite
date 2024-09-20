@@ -3,14 +3,18 @@ name: Veracode Scan
 on: [ push, pull_request ]
 
 jobs:
-  build:
-    runs-on: self-hosted
-    container:
-      image: veracode/pipeline-scan:latest
+  Veracode_Scan:
+    runs-on: self-hosted    
 
     steps:
       - name: Checkout Repoisitory
         uses: actions/checkout@v4
+
+      - name: Veracode CLI Autopacker
+        uses: docker://veracode/pipeline-scan:latest
+        with:
+          entrypoint: /bin/sh
+          args: -c "/home/gvg/tools/veracode package --source . --trust yes --output /tmp/veracode.zip && ls" 
 
       - name: Veracode CLI Autopacker
         run: |
