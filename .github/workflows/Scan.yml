@@ -1,4 +1,4 @@
-name: CI
+name: Veracode Scan
 
 on: [ push, pull_request ]
 
