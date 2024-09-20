@@ -1,0 +1,21 @@
+name: CI
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    container:
+      image: veracode/pipeline-scan:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Veracode CLI Autopacker
+        run: |
+          ./veracode.exe package --source . --trust yes --output /tmp/veracode.zip
+          ls
+
