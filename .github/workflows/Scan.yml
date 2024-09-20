@@ -19,5 +19,7 @@ jobs:
       - name: Veracode CLI Autopacker
         run: |
           /home/gvg/tools/veracode package --source . --trust yes --output /tmp/veracode.zip
-          ls
+          /home/gvg/tools/veracode scan --type archive --source /tmp/veracode.zip
+          /home/gvg/tools/veracode static scan /tmp/veracode.zip
+
 
